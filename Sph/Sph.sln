@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sph.Web", "Sph.Web\Sph.Web.csproj", "{7806F1EB-1D8E-490F-9AFC-5BE480B74B21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sph.Web.Tests", "Sph.Web.Tests\Sph.Web.Tests.csproj", "{A40B329A-6218-4576-90A8-5A0CED83AADE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7806F1EB-1D8E-490F-9AFC-5BE480B74B21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7806F1EB-1D8E-490F-9AFC-5BE480B74B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7806F1EB-1D8E-490F-9AFC-5BE480B74B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7806F1EB-1D8E-490F-9AFC-5BE480B74B21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A40B329A-6218-4576-90A8-5A0CED83AADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40B329A-6218-4576-90A8-5A0CED83AADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40B329A-6218-4576-90A8-5A0CED83AADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40B329A-6218-4576-90A8-5A0CED83AADE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

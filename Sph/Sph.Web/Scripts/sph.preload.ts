@@ -11,11 +11,12 @@ module sph {
             this.load.setPreloadSprite(this.preloadBar);
 
             this.load.image(SpriteNames.Logo, './Content/images/SphIcon.png');
+            this.load.image(SpriteNames.PlayerShip, './Content/images/PlayerShip.png');
         }
 
         create() {
 
-            var tween = this.add.tween(this.preloadBar).to({ alpha: 0 }, 5000, Phaser.Easing.Linear.None, true);
+            var tween = this.add.tween(this.preloadBar).to({ alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
             tween.onComplete.add(this.startMainMenu, this);
 
         }

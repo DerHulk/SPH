@@ -32,23 +32,22 @@ module sph {
            
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.A)) {
 
-                this.body.rotation += 5;
+                this.body.rotation -= 5;
 
             }
             else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D)) {
 
-                this.body.rotation -= 5;
+                this.body.rotation += 5;
 
             }
             else if (this.game.input.keyboard.isDown(Phaser.Keyboard.W)) {
-
-                this.body.velocity.x -= 2 * Math.cos(this.Ang);
-                this.body.velocity.y -= 2 * Math.sin(this.Ang);
+                this.body.velocity.x += 2 * Math.cos(this.Ang);
+                this.body.velocity.y += (2 * Math.sin(this.Ang)) * -1;
             }
             else if (this.game.input.keyboard.isDown(Phaser.Keyboard.S)) {
 
-                this.body.velocity.x += -2 * Math.cos(this.Ang);
-                this.body.velocity.y += -2 * Math.sin(this.Ang);
+                this.body.velocity.x -= 2 * Math.cos(this.Ang);
+                this.body.velocity.y -= (2 * Math.sin(this.Ang)) * -1;
 
             }
             else if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)) {

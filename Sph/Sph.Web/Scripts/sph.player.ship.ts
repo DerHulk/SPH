@@ -3,6 +3,9 @@
 module sph {
     export class PlayerShip extends Phaser.Sprite {
 
+        Rotation: number;
+        Ang: number;
+
         constructor(game: Phaser.Game, x: number, y: number) {
 
             super(game, x, y, SpriteNames.PlayerShip, 0);
@@ -14,24 +17,53 @@ module sph {
 
         update() {
 
-            this.body.velocity.x = 0;
+            var grad = (Math.PI / 180) * this.body.rotation;
 
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+            if (this.body.rotation < 0) {
+                this.Rotation = this.body.rotation * -1;
+            }
+            else
+            {
+                this.Rotation = 360 - this.body.rotation;
+            }
 
-                this.body.velocity.x = -150;
+
+            this.Ang = this.Rotation * (Math.PI/180 );
+           
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.A)) {
+
                 this.body.rotation += 5;
 
             }
-            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D)) {
 
-                this.body.velocity.x = 150;
                 this.body.rotation -= 5;
 
             }
-            else {
-                this.animations.frame = 0;
-            }
+            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.W)) {
 
+                this.body.velocity.x -= 2 * Math.cos(this.Ang);
+                this.body.velocity.y -= 2 * Math.sin(this.Ang);
+            }
+            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.S)) {
+
+                this.body.velocity.x += -2 * Math.cos(this.Ang);
+                this.body.velocity.y += -2 * Math.sin(this.Ang);
+
+            }
+            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.ESC)) {
+
+                this.body.position.x = 0;
+                this.body.position.y = 0;
+
+                this.body.rotation = 0;
+
+                this.body.acceleration.x = 0;
+                this.body.acceleration.y = 0;
+
+                this.body.velocity.x = 0;
+                this.body.velocity.y = 0;
+            }
         }
 
     }

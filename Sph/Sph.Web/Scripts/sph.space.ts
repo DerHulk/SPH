@@ -6,14 +6,29 @@ module sph {
 
         background: Phaser.Sprite;
         playership: PlayerShip;
+        debug: Phaser.Text;
 
         create() {
 
             this.background = this.add.sprite(100, 100, 'level1');
-            this.game.add.text(50, 50, "SPH Rocks!", { font: "24px Arial", fill: "#FF3333" });
+            this.debug =  this.game.add.text(50, 50, "SPH Rocks!", { font: "24px Arial", fill: "#FF3333" });
 
-            var playerShip = new PlayerShip(this.game, 25, 25);
-            this.game.physics.enable(playerShip);
+            this.playership = new PlayerShip(this.game, 25, 25);
+            this.game.physics.enable(this.playership);
+
+        }
+
+        update() {
+
+            if (this.playership == null)
+                return;
+
+            this.debug.text = "X " + this.playership.position.x + "\r\n" +
+            "Y " + this.playership.y + "\r\n" +
+            "R " + this.playership.rotation + "\r\n" +
+            "A " + this.playership.angle + "\r\n" +
+            "sph-A " + this.playership.Ang + "\r\n" +
+            "sph-R " + this.playership.Rotation;
 
         }
 

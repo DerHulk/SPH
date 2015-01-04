@@ -248,6 +248,7 @@
     <TypeScriptCompile Include="Scripts\sph.boot.ts" />
     <TypeScriptCompile Include="Scripts\sph.const.ts" />
     <TypeScriptCompile Include="Scripts\sph.game.ts" />
+    <TypeScriptCompile Include="Scripts\sph.helper.ts" />
     <TypeScriptCompile Include="Scripts\sph.menu.ts" />
     <TypeScriptCompile Include="Scripts\sph.player.ship.ts" />
     <TypeScriptCompile Include="Scripts\sph.preload.ts" />

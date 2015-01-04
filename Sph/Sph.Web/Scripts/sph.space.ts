@@ -16,8 +16,8 @@ module sph {
             this.playership = new PlayerShip(this.game, 25, 25);
             this.game.physics.enable(this.playership);
 
-            //this.camera.follow(this.playership);
-            //this.camera.bounds = null;
+            this.camera.follow(this.playership);
+            this.camera.bounds = null;
         }
 
         update() {

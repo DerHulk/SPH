@@ -16,6 +16,9 @@ module sph {
             this.playership = new PlayerShip(this.game, 25, 25);
             this.game.physics.enable(this.playership);
 
+           
+            this.camera.follow(this.playership);
+            this.camera.bounds = null;
         }
 
         update() {
@@ -29,7 +32,6 @@ module sph {
             "A " + this.playership.angle + "\r\n" +
             "sph-A " + this.playership.Ang + "\r\n" +
             "sph-R " + this.playership.Rotation;
-
         }
 
     }

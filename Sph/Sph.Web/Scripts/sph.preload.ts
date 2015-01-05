@@ -11,7 +11,8 @@ module sph {
             this.load.setPreloadSprite(this.preloadBar);
 
             this.load.image(SpriteNames.Logo, './Content/images/SphIcon.png');
-            this.load.image(SpriteNames.PlayerShip, './Content/images/PlayerShip.png');
+            //this.load.image(SpriteNames.PlayerShip, './Content/images/PlayerShip.png');
+            this.load.spritesheet(SpriteNames.PlayerShip, './Content/images/PlayerShipTile.png', 64, 64);
         }
 
         create() {

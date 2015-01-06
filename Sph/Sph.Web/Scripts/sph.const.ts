@@ -8,6 +8,13 @@
 
     }
 
+    export class AnimationNames {
+
+        public static get RotateLeft(): string { return "RotateLeft"; }
+        public static get RotateRight(): string { return "RotateRight"; }
+
+    }
+
     export class StateNames {
 
         public static get Preload(): string { return "PreLoad"; }

@@ -5,15 +5,15 @@ module sph {
 
         private RotationSpeed: number = 5;
         private Acceleration: number = 2;
-        private IsPlayingRotateLeft: boolean = false;
-        private IsPlayingRotateRight: boolean = false;
+        private AnimationState: AnimationStateHelper;
 
         constructor(game: Phaser.Game, x: number, y: number) {
 
             super(game, x, y, SpriteNames.PlayerShip, 0);
 
-            this.animations.add("RotateLeft", [1, 2], 6, true);
-            this.animations.add("RotateRight", [4, 5], 6, true);
+            this.animations.add(AnimationNames.RotateLeft, [1, 2], 6, true);
+            this.animations.add(AnimationNames.RotateRight, [4, 5], 6, true);
+            this.AnimationState = new AnimationStateHelper(this.animations);
 
             this.anchor.setTo(0.5, 0.5);
             game.add.existing(this);
@@ -24,39 +24,20 @@ module sph {
 
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.A)) {
                 this.body.rotation -= this.RotationSpeed;
-
-                if (!this.IsPlayingRotateLeft) {
-                    this.animations.play('RotateLeft');
-                    this.IsPlayingRotateLeft = true;
-                }
-
+                this.AnimationState.play(AnimationNames.RotateLeft);
             }
             else {
-
-                if (this.IsPlayingRotateLeft) {
-                    this.animations.stop('RotateLeft', true);
-                    this.IsPlayingRotateLeft = false;
-                    this.animations.frame = 0;
-                }
-
+                this.AnimationState.stop(AnimationNames.RotateLeft);
             }
 
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.D)) {
 
                 this.body.rotation += this.RotationSpeed;
-
-                if (!this.IsPlayingRotateRight) {
-                    this.animations.play('RotateRight');
-                    this.IsPlayingRotateRight = true;
-                }
+                this.AnimationState.play(AnimationNames.RotateRight);
             }
             else {
 
-                if (this.IsPlayingRotateRight) {
-                    this.animations.stop('RotateRight', true);
-                    this.animations.frame = 0;
-                    this.IsPlayingRotateRight = false;
-                }
+                this.AnimationState.stop(AnimationNames.RotateRight);
             }
 
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.W)) {

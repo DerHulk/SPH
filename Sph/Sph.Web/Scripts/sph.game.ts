@@ -14,7 +14,6 @@ module sph {
             this.state.add(StateNames.Menu, new Menu(), false);
             this.state.add(StateNames.Space, new Space(), false);
 
-
             this.state.start(StateNames.Boot);
         }
     }

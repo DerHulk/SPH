@@ -13,7 +13,10 @@ module sph {
             this.load.image(SpriteNames.Logo, './Content/images/SphIcon.png');
             //this.load.image(SpriteNames.PlayerShip, './Content/images/PlayerShip.png');
             this.load.spritesheet(SpriteNames.PlayerShip, './Content/images/PlayerShipTile.png', 64, 64);
-            this.load.image('imageKey', './Content/images/StarBackground.png');
+            this.load.image(SpriteNames.Starfield, './Content/images/StarBackground.png');
+
+            this.load.image('VirtualJoystickBtn', './Content/images/VirtualJoystickButton.png');
+            this.load.image('VirtualJoystickRtn', './Content/images/VirtualJoystickStick.png');
         }
 
         create() {

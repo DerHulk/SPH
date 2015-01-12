@@ -6,6 +6,11 @@ module sph {
         private RotationSpeed: number = 5;
         private Acceleration: number = 2;
         private AnimationState: AnimationStateHelper;
+        
+        EngineLeft: boolean;
+        EngineRight: boolean;
+        EngineForward: boolean;
+        EngineBackward: boolean;
 
         constructor(game: Phaser.Game, x: number, y: number) {
 
@@ -20,34 +25,42 @@ module sph {
 
         }
 
-        update() {
+        private rotateLeft(rotate: boolean) {
 
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.A)) {
+            if (rotate) {
                 this.body.rotation -= this.RotationSpeed;
                 this.AnimationState.play(AnimationNames.RotateLeft);
             }
             else {
                 this.AnimationState.stop(AnimationNames.RotateLeft);
             }
+        }
 
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.D)) {
+        private rotateRight(rotate: boolean) {
+
+            if (rotate) {
 
                 this.body.rotation += this.RotationSpeed;
                 this.AnimationState.play(AnimationNames.RotateRight);
             }
             else {
-
                 this.AnimationState.stop(AnimationNames.RotateRight);
             }
+        }
 
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.W)) {
+        update() {
+
+            this.rotateLeft(this.EngineLeft);
+            this.rotateRight(this.EngineRight);
+
+            if (this.EngineForward) {
 
                 var polar = PositionHelper.GetFromPolar(this.Acceleration, this.angle);
 
                 this.body.velocity.x += polar.x;
                 this.body.velocity.y += polar.y;
             }
-            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.S)) {
+            else if (this.EngineBackward) {
 
                 var polar = PositionHelper.GetFromPolar(this.Acceleration, this.angle);
 

@@ -74,6 +74,16 @@ module sph {
 
         }
 
+        public getDebugInfo(): string {
+
+            return "X " + this.position.x + Script.NewLine +
+                   "Y " + this.y + Script.NewLine+
+                   "R " + this.rotation + Script.NewLine +
+                   "A " + this.angle + Script.NewLine +
+                   "sph-R " + PositionHelper.NormalizeRotation(this.angle);
+
+        }
+
         private resetPosition(): void {
             this.body.position.x = 0;
             this.body.position.y = 0;

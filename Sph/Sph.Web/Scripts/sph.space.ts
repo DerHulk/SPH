@@ -48,26 +48,23 @@ module sph {
             this.game.debug.text(" input left: " + this.playership.EngineLeft +
                                  " input right " + this.playership.EngineRight, 0, 10);
 
-            this.debug.text = "X " + this.playership.position.x + "\r\n" +
-            "Y " + this.playership.y + "\r\n" +
-            "R " + this.playership.rotation + "\r\n" +
-            "A " + this.playership.angle + "\r\n" +
-            "sph-R " + PositionHelper.NormalizeRotation(this.playership.angle);
+            this.debug.text = this.playership.getDebugInfo();
 
         }
 
         private createInputForMobil() {
 
-            this.LeftRotate = this.game.add.button(50, 500, "VirtualJoystickRtn");
+            var height = 450;
+            this.LeftRotate = this.game.add.button(50, height, SpriteNames.VirtualStickLeft);
             this.LeftRotate.fixedToCamera = true;
 
-            this.RightRotate = this.game.add.button(150, 500, "VirtualJoystickRtn");
+            this.RightRotate = this.game.add.button(150, height, SpriteNames.VirtualStickRight);
             this.RightRotate.fixedToCamera = true;
 
-            this.Forward = this.game.add.button(100, 500, "VirtualJoystickBtn");
+            this.Forward = this.game.add.button(120, height, SpriteNames.VirtualStickForward);
             this.Forward.fixedToCamera = true;
 
-            this.Backward = this.game.add.button(100, 550, "VirtualJoystickBtn");
+            this.Backward = this.game.add.button(120, height + 50, SpriteNames.VirtualStickForward);
             this.Backward.fixedToCamera = true;
 
             this.game.input.onDown.add(() => this.game.scale.startFullScreen(false));

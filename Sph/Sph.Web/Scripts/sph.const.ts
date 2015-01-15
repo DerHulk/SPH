@@ -1,11 +1,19 @@
 ﻿module sph {
 
+    export class Script {
+        public static get NewLine(): string { return "\r\n"; }
+    }
+
     export class SpriteNames {
 
         public static get Loadbar(): string { return "Loadbar"; }
         public static get Logo(): string { return "Logo"; }
         public static get PlayerShip(): string { return "PlayerShip"; }
         public static get Starfield(): string { return "Starfield"; }
+
+        public static get VirtualStickForward(): string { return "VirtualStickForward" }
+        public static get VirtualStickLeft(): string { return "VirtualStickLeft" }
+        public static get VirtualStickRight(): string { return "VirtualStickRight" }
 
     }
 

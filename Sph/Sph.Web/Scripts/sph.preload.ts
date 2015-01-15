@@ -15,8 +15,11 @@ module sph {
             this.load.spritesheet(SpriteNames.PlayerShip, './Content/images/PlayerShipTile.png', 64, 64);
             this.load.image(SpriteNames.Starfield, './Content/images/StarBackground.png');
 
-            this.load.image('VirtualJoystickBtn', './Content/images/VirtualJoystickButton.png');
-            this.load.image('VirtualJoystickRtn', './Content/images/VirtualJoystickStick.png');
+            if (!this.game.device.desktop) {
+                this.load.image(SpriteNames.VirtualStickForward, './Content/images/VirtualJoystickButton.png');
+                this.load.image(SpriteNames.VirtualStickLeft, './Content/images/VirtualStick_Left.png');
+                this.load.image(SpriteNames.VirtualStickRight, './Content/images/VirtualStick_Right.png');
+            }
         }
 
         create() {

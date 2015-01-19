@@ -31,18 +31,8 @@ module sph {
             this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
-            if (this.game.device.desktop) {
-                this.createInputForDesktop();
-            }
-            else {
-                this.createInputForMobil();
-            }
-
-            this.Network = new NetworkHelper(this.game);
-
-            this.game.time.events.loop(60, () => {
-                this.Network.broadcastShipPosition(this.playership);
-            }, this);
+            this.setupInput();
+            this.setupNetwork();
 
         }
 
@@ -55,9 +45,26 @@ module sph {
                 return;
 
             this.game.debug.text(" input left: " + this.playership.EngineLeft +
-                                 " input right " + this.playership.EngineRight, 0, 10);
+                " input right " + this.playership.EngineRight, 0, 10);
 
             this.debug.text = this.playership.getDebugInfo();
+        }
+
+        private setupInput() {
+            if (this.game.device.desktop) {
+                this.createInputForDesktop();
+            }
+            else {
+                this.createInputForMobil();
+            }
+        }
+
+        private setupNetwork() {
+            this.Network = new NetworkHelper(this.game);
+
+            this.game.time.events.loop(60, () => {
+                this.Network.broadcastShipPosition(this.playership);
+            }, this);
         }
 
         private createInputForMobil() {

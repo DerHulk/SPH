@@ -5074,6 +5074,7 @@ declare module Phaser {
         shutdown(): void;
         update(): void;
 
+
     }
 
     class StateCycle {

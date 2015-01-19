@@ -78,4 +78,36 @@ module sph {
         }
 
     }
+
+    export class NetworkHelper {
+        private Game: Phaser.Game;
+
+        constructor(game: Phaser.Game) {
+            this.Game = game;
+        }
+
+        public preload() {
+
+            if (this.Game.context == null)
+                this.Game.context = new Object();
+
+            if (this.Game.context.sph == null)
+                this.Game.context.sph = new Object();
+
+            $.connection.hub.start().done(function () {
+               //connection is ready
+            });
+        }
+
+        public broadcastShipPosition(ship: PlayerShip) {
+
+            $.connection.spaceHub.server.updatePosition(ship.position);
+
+        }
+
+        public onReceivedShipPosition() {
+
+        }
+
+    }
 } 

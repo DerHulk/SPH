@@ -13,6 +13,8 @@ module sph {
         Forward: Phaser.Button;
         Backward: Phaser.Button;
 
+        Network: NetworkHelper;
+
         create() {
 
             this.background = this.game.add.tileSprite(0, 0, 800, 600, SpriteNames.Starfield);
@@ -35,6 +37,13 @@ module sph {
             else {
                 this.createInputForMobil();
             }
+
+            this.Network = new NetworkHelper(this.game);
+
+            this.game.time.events.loop(60, () => {
+                this.Network.broadcastShipPosition(this.playership);
+            }, this);
+
         }
 
         update() {
@@ -49,7 +58,6 @@ module sph {
                                  " input right " + this.playership.EngineRight, 0, 10);
 
             this.debug.text = this.playership.getDebugInfo();
-
         }
 
         private createInputForMobil() {

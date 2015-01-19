@@ -10,7 +10,6 @@ module sph {
         create() {
 
             this.game.state.start(StateNames.Preload, true, false);
-          
         }
 
     }

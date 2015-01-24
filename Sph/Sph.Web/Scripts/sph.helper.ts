@@ -80,13 +80,12 @@ module sph {
     }
 
     export class NetworkHelper {
+
         private Game: Phaser.Game;
+        private State: NetworkState; 
 
         constructor(game: Phaser.Game) {
             this.Game = game;
-        }
-
-        public preload() {
 
             if (this.Game.context == null)
                 this.Game.context = new Object();
@@ -94,8 +93,23 @@ module sph {
             if (this.Game.context.sph == null)
                 this.Game.context.sph = new Object();
 
+            if (this.Game.context.sph.NetworkState == null)
+                this.Game.context.sph.NetworkState = new NetworkState();
+
+            this.State = this.Game.context.sph.NetworkState;
+
+            $.connection.spaceHub.client.updatePosition = x => {
+                this.handleUpdate(this.State,x);
+            } 
+        }
+
+        public preload() {
+
+            this.State.BufferMap = new Map<string, Array<Object>>();
+            this.State.BufferMap.set("user", new Array<Object>());
+
             $.connection.hub.start().done(function () {
-               //connection is ready
+                //connection is ready
             });
         }
 
@@ -105,9 +119,27 @@ module sph {
 
         }
 
-        public onReceivedShipPosition() {
-
+        public GetPlayerPosition(): Array<Phaser.Point> {
+            return <Array<Phaser.Point>> this.State.BufferMap.get("user");
         }
+
+        private handleUpdate( state: NetworkState, position: any) {
+
+            var buffer = state.BufferMap.get("user");
+
+            if (buffer.length > state.BufferMax) {
+                buffer.shift();
+            }
+
+            buffer.push(position);
+        }
+
+    }
+
+    class NetworkState {
+
+        BufferMap: Map<string, Array<Object>>;
+        BufferMax: number = 10;
 
     }
 } 

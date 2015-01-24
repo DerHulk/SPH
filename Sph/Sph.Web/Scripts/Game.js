@@ -16,4 +16,3 @@
 window.onload = function () {
     var game = new SimpleGame();
 };
-//# sourceMappingURL=game.js.map

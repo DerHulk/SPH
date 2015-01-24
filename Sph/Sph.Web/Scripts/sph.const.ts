@@ -9,6 +9,7 @@
         public static get Loadbar(): string { return "Loadbar"; }
         public static get Logo(): string { return "Logo"; }
         public static get PlayerShip(): string { return "PlayerShip"; }
+        public static get Ship2(): string { return "Ship2"; }
         public static get Starfield(): string { return "Starfield"; }
 
         public static get VirtualStickForward(): string { return "VirtualStickForward" }

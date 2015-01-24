@@ -6,6 +6,7 @@ module sph {
 
         background: Phaser.TileSprite;
         playership: PlayerShip;
+        player: Array<Phaser.Sprite> = new Array<Phaser.Sprite>();
         debug: Phaser.Text;
 
         LeftRotate: Phaser.Button;
@@ -48,22 +49,43 @@ module sph {
                 " input right " + this.playership.EngineRight, 0, 10);
 
             this.debug.text = this.playership.getDebugInfo();
+            
         }
 
         private setupInput() {
+
             if (this.game.device.desktop) {
                 this.createInputForDesktop();
             }
             else {
                 this.createInputForMobil();
             }
+
         }
 
         private setupNetwork() {
+
             this.Network = new NetworkHelper(this.game);
 
             this.game.time.events.loop(60, () => {
+
                 this.Network.broadcastShipPosition(this.playership);
+                var position = this.Network.GetPlayerPosition().pop();
+
+                if (position == null)
+                    return;
+
+                if (this.player.length <= 0) {
+                    var newPlayer = new Phaser.Sprite(this.game, position.x, position.y, SpriteNames.Ship2);
+                    this.player.push(newPlayer);
+
+                    this.game.add.existing(newPlayer);
+                }
+                else {
+                    this.player[0].position = position;
+                }
+
+
             }, this);
         }
 

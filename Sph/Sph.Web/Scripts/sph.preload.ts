@@ -13,6 +13,8 @@ module sph {
             this.load.image(SpriteNames.Logo, './Content/images/SphIcon.png');
        
             this.load.spritesheet(SpriteNames.PlayerShip, './Content/images/PlayerShipTile.png', 64, 64);
+            this.load.spritesheet(SpriteNames.Ship2, './Content/images/Ship2.png', 64, 64);
+
             this.load.image(SpriteNames.Starfield, './Content/images/StarBackground.png');
 
             if (!this.game.device.desktop) {
